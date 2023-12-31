@@ -1,5 +1,5 @@
 'use client'
-
+// @ts-ignore
 import { useChat, type Message } from 'ai/react'
 
 import { cn } from '@/lib/utils'
