@@ -57,7 +57,7 @@ export function Header() {
   return (<>
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <Link href="/" rel="nofollow">
-        <img src="https://cdn-icons-png.flaticon.com/512/2525/2525975.png" className="h-[50px] mr-2" />
+        <img src="https://i.imgur.com/XVnO2Vt.png" className="h-[100px] mr-2" />
         {/* <IconNextChat className="w-6 h-6 mr-2 dark:hidden" inverted ur/>
           <IconNextChat className="hidden w-6 h-6 mr-2 dark:block" /> */}
       </Link>
