@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { IconExternalLink } from '@/components/ui/icons'
+import { ThemeToggle } from './theme-toggle'
 
 export interface UserMenuProps {
   user: Session['user']
@@ -45,23 +46,19 @@ export function UserMenu({ user }: UserMenuProps) {
             <span className="ml-2">{user?.name}</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent sideOffset={8} align="start" className="w-[180px]">
+        <DropdownMenuContent sideOffset={8} align="start" className="w-[250px]">
           <DropdownMenuItem className="flex-col items-start">
             <div className="text-xs font-medium">{user?.name}</div>
             <div className="text-xs text-zinc-500">{user?.email}</div>
           </DropdownMenuItem>
+
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <a
-              href="https://vercel.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-between w-full text-xs"
-            >
-              Vercel Homepage
-              <IconExternalLink className="w-3 h-3 ml-auto" />
-            </a>
+          {/* ThemeToggle */}
+          <DropdownMenuItem className="flex items-center">
+            <ThemeToggle />
           </DropdownMenuItem>
+          <DropdownMenuSeparator />
+
           <DropdownMenuItem
             onClick={() =>
               signOut({
