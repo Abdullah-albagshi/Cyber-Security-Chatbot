@@ -14,7 +14,7 @@ export const {
   handlers: { GET, POST },
   auth
 } = NextAuth({
-  providers: [GitHub({ clientId: process.env.GITHUB_ID, clientSecret: process.env.GITHUB_SECRET })],
+  providers: [GitHub({ clientId: process.env.AUTH_GITHUB_ID, clientSecret: process.env.AUTH_GITHUB_SECRET })],
   callbacks: {
     jwt({ token, profile }) {
       if (profile) {
@@ -33,7 +33,7 @@ export const {
       return !!auth?.user // this ensures there is a logged in user for -every- request
     }
   },
-  pages: {
+  pages: {  
     signIn: '/sign-in' // overrides the next-auth default signin page https://authjs.dev/guides/basics/pages
   }
 })
