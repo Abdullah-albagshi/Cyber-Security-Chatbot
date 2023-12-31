@@ -5,6 +5,7 @@ import React from 'react'
 const PasswordPage = () => {
   const [passwordLength, setPasswordLength] = React.useState(8);
   const [includeSpecialCharacters, setIncludeSpecialCharacters] = React.useState(false);
+  const [password, setPassword] = React.useState('');
 
   // create a password generator
   const generatePassword = () => {
@@ -32,15 +33,14 @@ const PasswordPage = () => {
       // add the character to the password string
       password += character;
     }
-    // return the password
-    return password;
+    setPassword(password);
   }
 
   return (
     // center the password generator div add an input for the length of the password ask the user if they want to include special characters
     // give the user suggestions for how to make a strong password
     // create a button to generate a password
-    <div className="flex justify-center items-center h-[90vh] w-[99%]">
+    <div className="flex justify-center items-center h-[95vh] w-[100%] bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex flex-col items-center">
         <h1 className="text-4xl font-bold mb-8">Password Generator</h1>
         <div className="flex flex-col mb-4">
@@ -72,16 +72,30 @@ const PasswordPage = () => {
           </ul>
         </div>
         <button
-          onClick={() => alert(generatePassword())}
+          onClick={() => generatePassword()}
           className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
         >
           Generate Password
         </button>
+        {/* generated password */}
+        {
+          password && (
+            <div className="flex flex-col mt-4">
+              <label className="mb-2">Generated Password</label>
+              <input
+                type="text"
+                value={password}
+                className="rounded-lg border px-4 py-2"
+              />
+            </div>
+          )
+        }
+
       </div>
     </div>
   )
 
-  
+
 }
 
 export default PasswordPage
