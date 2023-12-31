@@ -1,27 +1,9 @@
 import * as React from 'react'
 
-import { Button, buttonVariants } from '@/components/ui/button'
-import {
-  IconGitHub,
-  IconNextChat,
-  IconSeparator,
-  IconVercel
-} from '@/components/ui/icons'
-
-import { ChatHistory } from './chat-history'
-import { ClearHistory } from '@/components/clear-history'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-// import OpenChatBar from './OpenChatBar'
-import { Sidebar } from '@/components/sidebar'
-import { SidebarFooter } from '@/components/sidebar-footer'
-import { SidebarList } from '@/components/sidebar-list'
-import { SidebarMobile } from './sidebar-mobile'
-import { SidebarToggle } from './sidebar-toggle'
-import { ThemeToggle } from '@/components/theme-toggle'
 import { UserMenu } from '@/components/user-menu'
 import { auth } from '@/auth'
-import { clearChats } from '@/app/actions'
-import { cn } from '@/lib/utils'
 
 async function UserOrLogin() {
   const session = await auth()
@@ -40,6 +22,34 @@ async function UserOrLogin() {
   )
 }
 
+async function Links() {
+  const session = await auth()
+  return (
+    <>
+      <div className="flex items-center">
+        {session?.user ? (
+          <div className="flex items-center space-x-2">
+            {/* chat */}
+            <Link href="/">
+              <Button variant="outline" className="ml-2">
+                Chat
+              </Button>
+            </Link>
+            {/* password-generator */}
+            <Link href="/password-generator">
+              <Button variant="outline" className="ml-2">
+                Password Generator
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <></>
+        )}  
+      </div>
+    </>
+  )
+}
+
 
 
 export function Header() {
@@ -51,21 +61,7 @@ export function Header() {
           <IconNextChat className="hidden w-6 h-6 mr-2 dark:block" /> */}
       </Link>
       {/* links at the beginning */}
-      <div className="flex items-center space-x-2">
-        {/* chat */}
-        <Link href="/">
-          <Button variant="outline" className="ml-2">
-            Chat
-          </Button>
-        </Link>
-
-        {/* password-generator */}
-        <Link href="/password-generator">
-          <Button variant="outline" className="ml-2">
-            Password Generator
-          </Button>
-        </Link>
-      </div>
+      <Links />
       <div className="flex items-center  space-x-2 ">
         <div className="flex items-center">
           <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
