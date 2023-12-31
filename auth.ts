@@ -14,7 +14,7 @@ export const {
   handlers: { GET, POST },
   auth
 } = NextAuth({
-  providers: [GitHub],
+  providers: [GitHub({ clientId: process.env.GITHUB_ID, clientSecret: process.env.GITHUB_SECRET })],
   callbacks: {
     jwt({ token, profile }) {
       if (profile) {
