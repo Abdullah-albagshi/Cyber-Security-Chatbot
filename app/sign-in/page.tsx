@@ -1,5 +1,4 @@
 import LandingPage from '@/components/ui/LandingPage'
-import { LoginButton } from '@/components/login-button'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 

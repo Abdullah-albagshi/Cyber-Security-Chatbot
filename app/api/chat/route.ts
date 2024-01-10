@@ -1,8 +1,8 @@
-import { kv } from '@vercel/kv'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
-import OpenAI from 'openai'
 
+import OpenAI from 'openai'
 import { auth } from '@/auth'
+import { kv } from '@vercel/kv'
 import { nanoid } from '@/lib/utils'
 
 export const runtime = 'edge'
@@ -33,6 +33,15 @@ export async function POST(req: Request) {
     stream: true
   })
 
+  const assistantMessages = [
+    {
+      role: 'assistant',
+      content:
+        'You are a cyber security assistant. Write and run code to answer cyber security questions.'
+    }
+  ]
+  const combinedMessages = [...assistantMessages, ...messages]
+
   const stream = OpenAIStream(res, {
     async onCompletion(completion) {
       const title = json.messages[0].content.substring(0, 100)
@@ -46,11 +55,16 @@ export async function POST(req: Request) {
         createdAt,
         path,
         messages: [
-          ...messages,
+          {
+            content:
+              'You are a cyber security assistant. Write and run code to answer cyber security questions, and reject any that are not relevant.',
+            role: 'system'
+          },
           {
             content: completion,
-            role: 'assistant'
-          }
+            role: 'system'
+          },
+          ...combinedMessages
         ]
       }
       await kv.hmset(`chat:${id}`, payload)

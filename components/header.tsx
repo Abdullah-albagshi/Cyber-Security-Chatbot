@@ -42,6 +42,12 @@ async function Links() {
                 Password Generator
               </Button>
             </Link>
+            {/* url-checker */}
+            <Link href="/url-checker">
+              <Button variant="outline" className="ml-2">
+                URL Checker
+              </Button>
+            </Link>
           </div>
         ) : (
           <></>
