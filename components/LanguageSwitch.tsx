@@ -8,7 +8,7 @@ const LanguageSwitch = () => {
     <div className="flex items-center">
       <button
         className={`px-2 py-1 rounded-md ${
-          language === 'en' ? 'bg-gray-200' : ''
+          language === 'en' ? 'bg-gray-200 dark:bg-gray-800' : ''
         }`}
         onClick={() => setLanguage('en')}
       >
@@ -16,7 +16,7 @@ const LanguageSwitch = () => {
       </button>
       <button
         className={`px-2 py-1 rounded-md ${
-          language === 'ar' ? 'bg-gray-200' : ''
+          language === 'ar' ? 'bg-gray-200 dark:bg-gray-800' : ''
         }`}
         onClick={() => setLanguage('ar')}
       >

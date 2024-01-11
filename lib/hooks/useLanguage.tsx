@@ -22,11 +22,8 @@ export const LanguageProvider = ({
   children: React.ReactNode
 }) => {
   const [language, setLanguage] = React.useState<'en' | 'ar'>('' as 'en' | 'ar')
-  const localLanguage = localStorage.getItem('language')
-  // set the language from local storage if it exists
-  console.log('localLanguage', localLanguage)
-  console.log('language', language)
   useEffect(() => {
+    const localLanguage = localStorage.getItem('language')
     if (language) {
       localStorage.setItem('language', language)
       return

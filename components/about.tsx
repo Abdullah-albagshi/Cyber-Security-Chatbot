@@ -24,7 +24,6 @@ const About: React.FC = () => {
 
   const {translations,language} = useLanguage()
 
-  console.log(translations);
   return (
     <div className="container mx-auto mt-8 p-8 text-black dark:text-white rounded-lg flex flex-col items-center">
       <h1 className="text-3xl font-bold mb-4 text-center">
