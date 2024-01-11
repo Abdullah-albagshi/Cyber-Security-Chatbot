@@ -1,7 +1,9 @@
+'use client'
 import Image from 'next/image'
 import { LoginButton } from '../login-button'
 import React from 'react'
 import techLeft from './techLeft.svg'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 // import images as react components
 
@@ -9,22 +11,32 @@ import techLeft from './techLeft.svg'
 
 
 const LandingPage = () => {
+  const {translations,language} = useLanguage()
+
   return (
     <div className="grid-container">
 
       <div className="pageCenter">
         <div className="pageTitle">
-          <h1>Cyber Security chat bot</h1>
+          <h1>{translations[language]['welcomeTitle']}</h1>
         </div>
         <div className="pageSeparator">
           <div className="separator"></div>
         </div>
         <div className="pageDescription">
           <div className="flex flex-col items-center justify-center w-full h-full px-4 py-16 space-y-8">
-            <h1 className="text-4xl font-bold mb-8">{"Hello! I am an advanced chatbot specializing in cyber security."}</h1>
-            <h2 className="text-2xl font-bold mb-8">{"My goal is to help you create a strong and reliable cybersecurity plan for your company."}</h2>
-            <h2 className="text-2xl font-bold mb-8">{"With your input on data storage and sharing practices, I can offer expert guidance on developing an effective strategy."}</h2>
-            <h2 className="text-2xl font-bold mb-8">{"I'll provide recommendations on encryption methods, firewall creation, and policies to safeguard against suspicious activities and potential threats."}</h2>
+            <h1 className="text-4xl font-bold mb-8">
+              {translations[language]['welcomeText1']}
+            </h1>
+            <h2 className="text-2xl font-bold mb-8">
+              {translations[language]['welcomeText2']}
+            </h2>
+            <h2 className="text-2xl font-bold mb-8">
+              {translations[language]['welcomeText3']}
+            </h2>
+            <h2 className="text-2xl font-bold mb-8">
+              {translations[language]['welcomeText4']}
+            </h2>
           </div>
         </div>
         <div className="pageButton">
@@ -52,18 +64,18 @@ const LandingPage = () => {
                   </g>
                 </g>
                 <defs>
-                  <filter id="filter0_f" x="43.9997" y="0" width="38.5411" height="38.496" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <filter id="filter0_f" x="43.9997" y="0" width="38.5411" height="38.496" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur" />
                   </filter>
-                  <filter id="filter1_f" x="34" y="85" width="37.0371" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <filter id="filter1_f" x="34" y="85" width="37.0371" height="37" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur" />
                   </filter>
-                  <filter id="filter2_f" x="0" y="8" width="47.3675" height="47.2759" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <filter id="filter2_f" x="0" y="8" width="47.3675" height="47.2759" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur" />
                   </filter>
@@ -98,18 +110,18 @@ const LandingPage = () => {
 
                 </g>
                 <defs>
-                  <filter id="filter0_f" x="14" y="21" width="34.0212" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <filter id="filter0_f" x="14" y="21" width="34.0212" height="34" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur" />
                   </filter>
-                  <filter id="filter1_f" x="-4.57764e-05" y="22" width="37.0371" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <filter id="filter1_f" x="-4.57764e-05" y="22" width="37.0371" height="37" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur" />
                   </filter>
-                  <filter id="filter2_f" x="7.99995" y="0" width="44.9999" height="44.9208" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <filter id="filter2_f" x="7.99995" y="0" width="44.9999" height="44.9208" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="7.5" result="effect1_foregroundBlur" />
                   </filter>

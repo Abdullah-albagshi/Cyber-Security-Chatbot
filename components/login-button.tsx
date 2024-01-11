@@ -6,6 +6,7 @@ import { signIn } from 'next-auth/react'
 import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from '@/components/ui/button'
 import { IconGitHub, IconSpinner } from '@/components/ui/icons'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 interface LoginButtonProps extends ButtonProps {
   showGithubIcon?: boolean
@@ -19,6 +20,8 @@ export function LoginButton({
   ...props
 }: LoginButtonProps) {
   const [isLoading, setIsLoading] = React.useState(false)
+  const {translations,language} = useLanguage()
+
   return (
     <Button
       variant="outline"
@@ -36,7 +39,7 @@ export function LoginButton({
       ) : showGithubIcon ? (
         <IconGitHub className="mr-2" />
       ) : null}
-      {text}
+      {translations[language]['loginWithGithub']}
     </Button>
   )
 }

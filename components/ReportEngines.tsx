@@ -1,8 +1,11 @@
 import { ApiVoidType } from "@/app/api/urlchecker/types";
+import { useLanguage } from "@/lib/hooks/useLanguage";
 import Link from "next/link";
 import React from "react";
 
 const ReportEngines = ({ data, isDarkMode }: { data: ApiVoidType, isDarkMode: boolean }) => {
+  const { translations, language } = useLanguage()
+
   const { domain_blacklist } = data.data.report;
   const engines = domain_blacklist.engines;
 
@@ -22,15 +25,28 @@ const ReportEngines = ({ data, isDarkMode }: { data: ApiVoidType, isDarkMode: bo
 
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Report Details</h2>
+    <div dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      <h2 className="text-2xl font-bold mb-4">
+        {/* Report Details */}
+        {translations[language]['reportDetails']}
+      </h2>
       <div className={`mx-auto mt-8 ${isDarkMode ? 'dark:bg-gray-800 text-white' : 'bg-gray-100 text-gray-800'}`}>
         <table className="w-full border border-collapse">
           <thead>
             <tr className={`${isDarkMode ? 'bg-gray-900' : 'bg-gray-300'}`}>
-              <th className="py-2 px-4 border">Engine Name</th>
-              <th className="py-2 px-4 border">Engine URL</th>
-              <th className="py-2 px-4 border">Detected</th>
+              <th className="py-2 px-4 border">
+                {/* Engine Name */}
+                {translations[language]['engineName']}
+              </th>
+              <th className="py-2 px-4 border">
+                {/* Engine URL */}
+                {translations[language]['engineUrl']}
+              </th>
+              
+              <th className="py-2 px-4 border">
+                {/* Detected */}
+                {translations[language]['detected']}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -45,7 +61,7 @@ const ReportEngines = ({ data, isDarkMode }: { data: ApiVoidType, isDarkMode: bo
                       </p>
                     </td>
                     <td className={`py-2 px-4 border ${getStatusColorClass(engine.detected)}`}>
-                      {engine.detected ? 'Detected' : 'Not Detected'}
+                      {engine.detected ? translations[language]['detected'] : translations[language]['notDetected']}
                     </td>
                   </tr>
                 ))}
@@ -54,7 +70,11 @@ const ReportEngines = ({ data, isDarkMode }: { data: ApiVoidType, isDarkMode: bo
           </tbody>
         </table>
       </div>
-      <p className="mt-4">Total Detections: {domain_blacklist.detections}</p>
+      {/* <p className="mt-4">Total Detections: {domain_blacklist.detections}</p> */}
+      <p className="mt-4">
+        {/* Total Detections: */}
+        {translations[language]['totalDetections']} {domain_blacklist.detections}
+      </p>
     </div>
   );
 }

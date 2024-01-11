@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { IconExternalLink } from '@/components/ui/icons'
 import { ThemeToggle } from './theme-toggle'
+import LanguageSwitch from './LanguageSwitch'
 
 export interface UserMenuProps {
   user: Session['user']
@@ -58,7 +59,12 @@ export function UserMenu({ user }: UserMenuProps) {
             <ThemeToggle />
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-
+          {/* language toggle */}
+          <DropdownMenuItem className="flex items-center">
+            <LanguageSwitch />
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          
           <DropdownMenuItem
             onClick={() =>
               signOut({

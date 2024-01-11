@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { UserMenu } from '@/components/user-menu'
 import { auth } from '@/auth'
+import LanguageSwitch from './LanguageSwitch'
 
 async function UserOrLogin() {
   const session = await auth()
@@ -15,6 +16,7 @@ async function UserOrLogin() {
           <UserMenu user={session.user} />
         ) : (
           <>
+          <LanguageSwitch/>
             {/* about */}
             {/* <Link href="/about">
               <Button variant="outline" className="ml-2">

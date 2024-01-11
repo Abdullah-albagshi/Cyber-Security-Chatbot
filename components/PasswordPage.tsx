@@ -1,11 +1,16 @@
 'use client'
 
+import { useLanguage } from '@/lib/hooks/useLanguage';
 import React from 'react'
 
 const PasswordPage = () => {
   const [passwordLength, setPasswordLength] = React.useState(8);
   const [includeSpecialCharacters, setIncludeSpecialCharacters] = React.useState(false);
   const [password, setPassword] = React.useState('');
+
+  const {translations:passwordGeneratorTranslations,language} = useLanguage()
+  const translations = passwordGeneratorTranslations[language];
+
 
   // create a password generator
   const generatePassword = () => {
@@ -42,9 +47,9 @@ const PasswordPage = () => {
     // create a button to generate a password
     <div className="flex justify-center items-center h-[95vh] w-[100%] bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-8">Password Generator</h1>
+        <h1 className="text-4xl font-bold mb-8">{translations['title']}</h1>
         <div className="flex flex-col mb-4">
-          <label className="mb-2">Password Length</label>
+          <label className="mb-2">{translations['passwordLengthLabel']}</label>
           <input
             type="number"
             value={passwordLength}
@@ -59,40 +64,33 @@ const PasswordPage = () => {
             onChange={(e) => setIncludeSpecialCharacters(e.target.checked)}
             className="mr-2"
           />
-          <label>Include Special Characters</label>
+          <label>{translations['includeSpecialCharactersLabel']}</label>
         </div>
-        <div className="mb-4">
-          <h2 className="text-xl font-bold mb-2">Strong Passwords</h2>
+        <div className="mb-4" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+          <h2 className="text-xl font-bold mb-2">{translations['strongPasswordsTitle']}</h2>
           <ul className="list-disc list-inside">
-            <li>Use a minimum of 8 characters</li>
-            <li>Use a combination of letters, numbers, and special characters</li>
-            <li>Do not use personal information</li>
-            <li>Do not use dictionary words</li>
-            <li>Do not use common substitutions</li>
+            {translations['strongPasswordsList'].map((item: string, index: any) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </div>
         <button
           onClick={() => generatePassword()}
-          // className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
-          // green button
           className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
         >
-          Generate Password
+          {translations['generatePasswordButton']}
         </button>
         {/* generated password */}
-        {
-          password && (
-            <div className="flex flex-col mt-4">
-              <label className="mb-2">Generated Password</label>
-              <input
-                type="text"
-                value={password}
-                className="rounded-lg border px-4 py-2"
-              />
-            </div>
-          )
-        }
-
+        {password && (
+          <div className="flex flex-col mt-4">
+            <label className="mb-2">{translations['generatedPasswordLabel']}</label>
+            <input
+              type="text"
+              value={password}
+              className="rounded-lg border px-4 py-2"
+            />
+          </div>
+        )}
       </div>
     </div>
   )

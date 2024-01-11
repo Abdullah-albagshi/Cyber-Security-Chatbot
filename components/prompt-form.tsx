@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
 import { UseChatHelpers } from 'ai/react'
@@ -11,6 +12,7 @@ import {
 } from '@/components/ui/tooltip'
 import { IconArrowElbow, IconPlus } from '@/components/ui/icons'
 import { useRouter } from 'next/navigation'
+import { useLanguage } from '@/lib/hooks/useLanguage'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -32,6 +34,8 @@ export function PromptForm({
       inputRef.current.focus()
     }
   }, [])
+
+  const { translations, language } = useLanguage()
 
   return (
     <form
@@ -60,10 +64,14 @@ export function PromptForm({
               )}
             >
               <IconPlus />
-              <span className="sr-only">New Chat</span>
+              <span className="sr-only">
+                {translations[language]['newChat']}
+              </span>
             </button>
           </TooltipTrigger>
-          <TooltipContent>New Chat</TooltipContent>
+          <TooltipContent>
+            {translations[language]['newChat']}
+          </TooltipContent>
         </Tooltip>
         <Textarea
           ref={inputRef}
@@ -72,7 +80,8 @@ export function PromptForm({
           rows={1}
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="Send a message."
+          // placeholder="Send a message."
+          placeholder={translations[language]['sendAMessage']}
           spellCheck={false}
           className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
         />
@@ -85,10 +94,14 @@ export function PromptForm({
                 disabled={isLoading || input === ''}
               >
                 <IconArrowElbow />
-                <span className="sr-only">Send message</span>
+                <span className="sr-only">
+                  {translations[language]['sendMessage']}
+                </span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Send message</TooltipContent>
+            <TooltipContent>
+              {translations[language]['sendMessage']}
+            </TooltipContent>
           </Tooltip>
         </div>
       </div>
