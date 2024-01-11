@@ -35,6 +35,5 @@ export const {
   },
   pages: {  
     signIn: '/sign-in', // overrides the next-auth default signin page https://authjs.dev/guides/basics/pages
-    about: '/about', // overrides the next-auth default about page https://authjs.dev/guides/basics/pages
   }
 })
