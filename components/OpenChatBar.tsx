@@ -11,10 +11,10 @@ async function OpenChatBar() {
     <>
       {session?.user ? (
         <>
-          <SidebarMobile>
+          {/* <SidebarMobile>
             <ChatHistory userId={session.user.id} />
-          </SidebarMobile>
-          <SidebarToggle />
+          </SidebarMobile> */}
+          {/* <SidebarToggle /> */}
         </>
       ) : (
         <Link href="/" target="_blank" rel="nofollow">
