@@ -56,6 +56,10 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
           router.push(`/chat/${id}`, { shallow: true, scroll: false })
           router.refresh()
         }
+      },
+      onError: (error) => {
+        console.error('Chat error:', error);
+        // toast.error(`An error occurred during the chat: ${error.message}`);
       }
     })
   return (
